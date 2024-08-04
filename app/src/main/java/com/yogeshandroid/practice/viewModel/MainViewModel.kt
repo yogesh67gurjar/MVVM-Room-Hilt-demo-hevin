@@ -1,17 +1,21 @@
 package com.yogeshandroid.practice.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.yogeshandroid.practice.model.UserResponse
 import com.yogeshandroid.practice.repository.MainRepository
 import com.yogeshandroid.practice.utils.ApiListener
+import com.yogeshandroid.practice.utils.SortBy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(var mainRepository: MainRepository) : ViewModel() {
+class MainViewModel @Inject constructor(private var mainRepository: MainRepository) : ViewModel() {
+
+    val searchBy: MutableLiveData<String> = MutableLiveData("")
+    var isLoading: MutableLiveData<Boolean> = MutableLiveData(true)
+    var sortBy: MutableLiveData<SortBy> = MutableLiveData(SortBy.None)
 
     private var pageNumber = 1
     private val limit = 10;
@@ -26,14 +30,13 @@ class MainViewModel @Inject constructor(var mainRepository: MainRepository) : Vi
     private var apiListener: ApiListener = object : ApiListener {
         override fun onSuccess(any: Any, type: String) {
             _users.postValue(any as UserResponse)
-
-            isLastPage = pageNumber < any.total / 10
-
-            Log.d("~~~111~~~", " page is ${pageNumber}  ,  total/10 is ${any.total / 10}  ,  isNext ${isLastPage}")
+            isLastPage = pageNumber - 1 > any.total / 10
+            isLoading.postValue(false)
         }
 
         override fun onFailure(error: String) {
             _failure.postValue(error)
+            isLoading.postValue(false)
         }
     }
 
@@ -44,5 +47,6 @@ class MainViewModel @Inject constructor(var mainRepository: MainRepository) : Vi
     fun getUsers() {
         pageNumber += 1;
         mainRepository.getUsers(limit * (pageNumber - 1), limit, apiListener)
+        isLoading.postValue(true)
     }
 }

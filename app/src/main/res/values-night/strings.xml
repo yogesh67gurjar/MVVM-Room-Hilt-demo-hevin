@@ -1,4 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Practice</string>
     <string name="search_by_name_or_email">Search by name or email</string>
 </resources>

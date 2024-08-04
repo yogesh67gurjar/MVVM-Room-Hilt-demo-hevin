@@ -14,6 +14,11 @@ class UsersAdapter(var myData: List<UserResponse.User>, val context: Context) :
 
     class UserViewHolder(val rvUserBinding: RvUserBinding) : ViewHolder(rvUserBinding.root)
 
+    fun filterList(searchList: MutableList<UserResponse.User>) {
+        myData = searchList
+        notifyDataSetChanged()
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
         return UserViewHolder(
             RvUserBinding.inflate(
@@ -31,6 +36,7 @@ class UsersAdapter(var myData: List<UserResponse.User>, val context: Context) :
         holder.rvUserBinding.nameTv.text = single.firstName
         holder.rvUserBinding.emailTv.text = single.email
         holder.rvUserBinding.ageTv.text = single.age.toString()
+        holder.rvUserBinding.idTv.text = single.id.toString()
     }
 
     override fun getItemCount() = myData.size

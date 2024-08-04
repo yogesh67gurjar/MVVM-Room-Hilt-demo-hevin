@@ -4,14 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="@dimen/_12sdp"
-    android:layout_marginTop="@dimen/_8sdp"
+    android:layout_marginVertical="@dimen/_6sdp"
     app:cardCornerRadius="@dimen/_16sdp"
-    app:cardElevation="@dimen/_8sdp">
+    app:cardElevation="@dimen/_6sdp">
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
         android:padding="@dimen/_12sdp">
 
@@ -21,9 +21,9 @@
             android:layout_height="@dimen/_46sdp" />
 
         <LinearLayout
-            android:layout_marginStart="@dimen/_8sdp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
@@ -47,7 +47,8 @@
                     android:id="@+id/nameTv"
 
                     android:layout_width="0dp"
-                    android:layout_weight="1"                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="fddagdfgdfgdfgdfgdfgdfgdfgdfgdfg"
@@ -57,11 +58,12 @@
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_marginVertical="@dimen/_4sdp"
+                android:gravity="center"
                 android:orientation="horizontal">
 
                 <TextView
@@ -76,8 +78,8 @@
                 <TextView
                     android:id="@+id/ageTv"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="fg"
@@ -87,6 +89,7 @@
 
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -106,7 +109,8 @@
                     android:id="@+id/emailTv"
 
                     android:layout_width="0dp"
-                    android:layout_weight="1"                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:ellipsize="end"
                     android:maxLines="1"
                     android:text="fddagdfgdfgdfgdfgdfgdfgdfgdfgdfg"
@@ -118,6 +122,16 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/idTv"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_7ssp"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
 

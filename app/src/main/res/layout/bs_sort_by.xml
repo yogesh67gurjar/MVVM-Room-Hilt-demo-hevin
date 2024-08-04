@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginVertical="@dimen/_8sdp"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_16sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/noneBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="None"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/nameBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="Name"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/emailBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingVertical="@dimen/_8sdp"
+        android:text="Email"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold" />
+</LinearLayout>

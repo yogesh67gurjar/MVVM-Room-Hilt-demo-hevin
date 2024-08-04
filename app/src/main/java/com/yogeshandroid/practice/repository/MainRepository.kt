@@ -8,7 +8,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
 
-class MainRepository @Inject constructor(var apiService: ApiService) {
+class MainRepository @Inject constructor(private var apiService: ApiService) {
     fun getUsers(skip: Int, limit: Int, apiListener: ApiListener) {
         apiService.getUsers(skip, limit).enqueue(object : Callback<UserResponse> {
             override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
