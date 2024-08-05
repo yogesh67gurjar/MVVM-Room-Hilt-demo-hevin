@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.yogeshandroid.practice.model.UserResponse
 import com.yogeshandroid.practice.repository.MainRepository
 import com.yogeshandroid.practice.utils.ApiListener
-import com.yogeshandroid.practice.utils.SortBy
+import com.yogeshandroid.practice.utils.UserSortBy
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class MainViewModel @Inject constructor(private var mainRepository: MainReposito
 
     val searchBy: MutableLiveData<String> = MutableLiveData("")
     var isLoading: MutableLiveData<Boolean> = MutableLiveData(true)
-    var sortBy: MutableLiveData<SortBy> = MutableLiveData(SortBy.None)
+    var sortBy: MutableLiveData<UserSortBy> = MutableLiveData(UserSortBy.None)
 
     private var pageNumber = 1
     private val limit = 10;

@@ -1,4 +1,4 @@
-package com.yogeshandroid.practice.views
+package com.yogeshandroid.practice.views.ui
 
 import android.os.Bundle
 import android.text.Editable
@@ -12,7 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.yogeshandroid.practice.databinding.ActivityMainBinding
 import com.yogeshandroid.practice.databinding.BsSortByBinding
 import com.yogeshandroid.practice.model.UserResponse
-import com.yogeshandroid.practice.utils.SortBy
+import com.yogeshandroid.practice.utils.UserSortBy
 import com.yogeshandroid.practice.viewModel.MainViewModel
 import com.yogeshandroid.practice.views.adapters.UsersAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -81,15 +81,15 @@ class MainActivity : AppCompatActivity() {
             }
 
             when (mainViewModel.sortBy.value) {
-                SortBy.None -> {
+                UserSortBy.None -> {
                     filteredlist.sortBy { it.id }
                 }
 
-                SortBy.Name -> {
+                UserSortBy.Name -> {
                     filteredlist.sortBy { it.firstName }
                 }
 
-                SortBy.Email -> {
+                UserSortBy.Email -> {
                     filteredlist.sortBy { it.email }
                 }
 
@@ -147,17 +147,17 @@ class MainActivity : AppCompatActivity() {
         sortByBottomSheet.setContentView(bsSortByBinding.root)
 
         bsSortByBinding.noneBtn.setOnClickListener {
-            mainViewModel.sortBy.value = SortBy.None
+            mainViewModel.sortBy.value = UserSortBy.None
             sortByBottomSheet.dismiss()
         }
 
         bsSortByBinding.nameBtn.setOnClickListener {
-            mainViewModel.sortBy.value = SortBy.Name
+            mainViewModel.sortBy.value = UserSortBy.Name
             sortByBottomSheet.dismiss()
         }
 
         bsSortByBinding.emailBtn.setOnClickListener {
-            mainViewModel.sortBy.value = SortBy.Email
+            mainViewModel.sortBy.value = UserSortBy.Email
             sortByBottomSheet.dismiss()
         }
 

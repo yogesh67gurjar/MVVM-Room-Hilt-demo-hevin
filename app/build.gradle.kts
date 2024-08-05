@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.play.services.analytics.impl)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,12 +68,15 @@ dependencies {
     implementation(libs.viewModel.scope)
 
     // sdp ssp
-    implementation (libs.sdp.android)
-    implementation (libs.ssp.android)
+    implementation(libs.sdp.android)
+    implementation(libs.ssp.android)
 
     // circle imageview
-    implementation (libs.circleimageview)
+    implementation(libs.circleimageview)
 
+    // room
+    implementation("androidx.room:room-runtime:2.2.6")
+    kapt("androidx.room:room-compiler:2.2.6")
 
 }
 

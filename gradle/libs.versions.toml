@@ -13,9 +13,11 @@ constraintlayout = "2.1.4"
 dagger-hilt = "2.51"
 retrofit = "2.11.0"
 picasso = "2.8"
+runtime = "1.1.1"
 sdpAndroid = "1.1.1"
 sspAndroid = "1.1.1"
-viewModel-scope="2.2.0"
+viewModel-scope = "2.2.0"
+playServicesAnalyticsImpl = "18.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -36,7 +38,7 @@ picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "pic
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 viewModel-scope = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewModel-scope" }
-
+play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

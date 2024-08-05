@@ -1,7 +1,7 @@
 package com.yogeshandroid.practice.utils
 
-enum class SortBy {
+enum class ProductSortBy {
     None,
-    Name,
-    Email
+    Title,
+    Brand
 }
