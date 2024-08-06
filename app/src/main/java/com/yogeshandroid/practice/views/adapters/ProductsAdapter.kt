@@ -10,6 +10,7 @@ import com.yogeshandroid.practice.databinding.RvProductsBinding
 import com.yogeshandroid.practice.databinding.RvUserBinding
 import com.yogeshandroid.practice.model.Product
 import com.yogeshandroid.practice.model.ProductResponse
+import kotlin.math.sin
 
 class ProductsAdapter(var myData: List<Product>, val context: Context) :
     RecyclerView.Adapter<ProductsAdapter.ProductViewHolder>() {
@@ -37,7 +38,7 @@ class ProductsAdapter(var myData: List<Product>, val context: Context) :
 
         Picasso.get().load(single.images[0]).into(holder.rvProductsBinding.img)
         holder.rvProductsBinding.titleTv.text = single.title
-        holder.rvProductsBinding.brandTv.text = single.brand
+        holder.rvProductsBinding.priceTv.text = "${single.price} $"
         holder.rvProductsBinding.categoryTv.text = single.category
         holder.rvProductsBinding.idTv.text = single.id.toString()
     }

@@ -1,5 +1,6 @@
 package com.yogeshandroid.practice.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -11,32 +12,32 @@ data class ProductResponse(
 )
 
 @Entity(tableName = "Product")
-
 data class Product(
-    val availabilityStatus: String,
-    val brand: String,
-    val category: String,
-    val description: String,
-    val dimensions: Dimensions,
-    val discountPercentage: Double,
+    val availabilityStatus: String = "",
+    val brand: String? = null,
+    val category: String = "",
+    val description: String = "",
+    val dimensions: Dimensions = Dimensions(0.0, 0.0, 0.0),
+    val discountPercentage: Double = 0.0,
     @PrimaryKey
     val id: Int,
+    @ColumnInfo(name = "pageNumber")
     var pageNumber: Int,
-    val images: List<String>,
-    val meta: Meta,
-    val minimumOrderQuantity: Int,
-    val price: Double,
-    val rating: Double,
-    val returnPolicy: String,
-    val reviews: List<Review>,
-    val shippingInformation: String,
-    val sku: String,
-    val stock: Int,
-    val tags: List<String>,
-    val thumbnail: String,
-    val title: String,
-    val warrantyInformation: String,
-    val weight: Int
+    val images: List<String> = listOf(),
+    val meta: Meta = Meta("", "", "", ""),
+    val minimumOrderQuantity: Int = 0,
+    val price: Double = 0.0,
+    val rating: Double = 0.0,
+    val returnPolicy: String = "",
+    val reviews: List<Review> = listOf(),
+    val shippingInformation: String = "",
+    val sku: String = "",
+    val stock: Int = 0,
+    val tags: List<String> = listOf(),
+    val thumbnail: String = "",
+    val title: String = "",
+    val warrantyInformation: String = "",
+    val weight: Int = 0
 )
 
 data class Dimensions(

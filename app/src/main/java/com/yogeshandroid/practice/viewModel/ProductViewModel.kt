@@ -37,9 +37,15 @@ class ProductViewModel @Inject constructor(
 
     private var apiListener: ApiListener = object : ApiListener {
         override fun onSuccess(any: Any, type: String) {
-            _products.postValue(any as ProductResponse)
-            saveProductsInRoom(any.products)
-            isLastPage = pageNumber - 1 > any.total / 10
+            val resp=any as ProductResponse
+            viewModelScope.launch(Dispatchers.IO) {
+                resp.products.map {
+                    it.pageNumber = pageNumber
+                }
+                appDatabase.getDao().insertProducts(resp.products)
+            }
+            _products.postValue(resp)
+            isLastPage = pageNumber - 1 > resp.total / 10
             isLoading.postValue(false)
         }
 
@@ -57,14 +63,5 @@ class ProductViewModel @Inject constructor(
         pageNumber += 1;
         productRepository.getProducts(limit * (pageNumber - 1), limit, apiListener)
         isLoading.postValue(true)
-    }
-
-    fun saveProductsInRoom(products: List<Product>) {
-        viewModelScope.launch(Dispatchers.IO) {
-            products.map {
-                it.pageNumber = pageNumber
-            }
-            appDatabase.getDao().insertProducts(products)
-        }
     }
 }

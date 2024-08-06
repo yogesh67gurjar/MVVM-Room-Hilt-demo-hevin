@@ -1,5 +1,6 @@
 package com.yogeshandroid.practice.views.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -39,7 +40,11 @@ class ProductActivity : AppCompatActivity() {
         initBottomSheet()
         initPagination()
         initSearch()
+        initClick()
+        attachObservers()
+    }
 
+    private fun attachObservers() {
         productViewModel.isLoading.observe(this) {
             if (it) {
                 activityProductBinding.loader.visibility = View.VISIBLE
@@ -66,15 +71,19 @@ class ProductActivity : AppCompatActivity() {
         }
     }
 
+    private fun initClick() {
+        activityProductBinding.localBtn.setOnClickListener {
+            startActivity(Intent(this@ProductActivity, SavedProductsActivity::class.java))
+        }
+    }
+
 
     private fun searchBy(s: String) {
         val filteredlist: MutableList<Product> = mutableListOf()
         if (myData.isNotEmpty()) {
             if (s != "") {
                 for (item in myData) {
-                    if (item.title.lowercase().contains(s.lowercase()) &&
-                        item.brand.lowercase().contains(s.lowercase())
-                    ) {
+                    if (item.title.lowercase().contains(s.lowercase())) {
                         filteredlist.add(item)
                     }
                 }
@@ -91,14 +100,13 @@ class ProductActivity : AppCompatActivity() {
                     filteredlist.sortBy { it.title }
                 }
 
-                ProductSortBy.Brand -> {
-                    filteredlist.sortBy { it.brand }
+                ProductSortBy.Price -> {
+                    filteredlist.sortBy { it.price }
                 }
 
                 null -> {}
             }
             activityProductBinding.sortBy.text = productViewModel.sortBy.value?.name.toString()
-
 
             adapter.filterList(filteredlist)
             setVisibility(filteredlist.size)
@@ -158,8 +166,8 @@ class ProductActivity : AppCompatActivity() {
             sortByBottomSheet.dismiss()
         }
 
-        bsProductSortByBinding.brandBtn.setOnClickListener {
-            productViewModel.sortBy.value = ProductSortBy.Brand
+        bsProductSortByBinding.priceBtn.setOnClickListener {
+            productViewModel.sortBy.value = ProductSortBy.Price
             sortByBottomSheet.dismiss()
         }
 
