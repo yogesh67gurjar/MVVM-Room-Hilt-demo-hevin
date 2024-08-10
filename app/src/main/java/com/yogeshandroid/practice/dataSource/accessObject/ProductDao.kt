@@ -12,5 +12,8 @@ interface ProductDao {
     fun insertProducts(products: List<Product>)
 
     @Query("SELECT MAX(pageNumber) FROM product")
-     fun getMaxPage(): Int
+    fun getMaxPage(): Int
+
+    @Query("SELECT * FROM product WHERE pageNumber=:page")
+    fun getProducts(page: Int): List<Product>
 }
